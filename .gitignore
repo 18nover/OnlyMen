@@ -2,10 +2,7 @@
 # OnlyMen Monorepo
 # ============================================
 
-app/
-atproto/
-eliza/
-.devcontainer/
+eliza/packages/os/linux/tails/chroot/
 
 # --------------------------------------------
 # Dependencies
