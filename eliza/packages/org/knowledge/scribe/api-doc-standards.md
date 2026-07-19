@@ -2,7 +2,18 @@
 
 ## Overview
 
-Standards for API documentation using OpenAPI/Swagger format, covering endpoint documentation, schemas, error codes, authentication, and rate limits.
+**In this stack the API contract is lexicons, not OpenAPI.** Every backend
+endpoint is defined by a lexicon JSON in `atproto/lexicons/` — the schema
+(with its `description` fields) is the primary API documentation, and
+`lex-cli gen-md` generates Markdown reference docs straight from it.
+Scribe's job for XRPC surfaces: get the `description` fields right in the
+lexicon (with Lexi), generate, then write the *narrative* layer (flows,
+auth requirements, examples) that schemas can't express — e.g. the
+age-assurance begin→getState flow or the phone-verify→import contact flow.
+Never hand-write a second source of truth for request/response shapes.
+
+The OpenAPI material below applies only to auxiliary non-XRPC services
+(internal dashboards, webhooks), and as general documentation craft.
 
 ## OpenAPI/Swagger Format
 

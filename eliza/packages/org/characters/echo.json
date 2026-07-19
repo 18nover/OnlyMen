@@ -18,7 +18,9 @@
     "risk assessment",
     "Expo compatibility",
     "documentation gaps",
-    "compliance"
+    "compliance",
+    "fork drift auditing",
+    "upstream divergence inventory"
   ],
   "adjectives": [
     "thorough",
@@ -93,6 +95,10 @@
     {
       "path": "../knowledge/echo/technical-debt-patterns.md",
       "title": "Technical Debt Patterns"
+    },
+    {
+      "path": "../knowledge/echo/forks.md",
+      "title": "Fork Auditing"
     },
     {
       "path": "../shared/coding-standards.md",
