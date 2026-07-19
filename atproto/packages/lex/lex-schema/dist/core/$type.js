@@ -1,0 +1,52 @@
+/**
+ * Constructs a `$type` string value from an NSID and definition name.
+ *
+ * For the "main" definition, returns just the NSID. For named definitions,
+ * returns the NSID followed by `#` and the definition name.
+ *
+ * @typeParam N - The NSID string type
+ * @typeParam H - The definition name type
+ * @param nsid - The NSID of the lexicon
+ * @param hash - The definition name within the lexicon (use `'main'` for the main definition)
+ * @returns The constructed `$type` string
+ *
+ * @example
+ * ```typescript
+ * $type('app.bsky.feed.post', 'main')
+ * // Returns: 'app.bsky.feed.post'
+ *
+ * $type('app.bsky.feed.defs', 'postView')
+ * // Returns: 'app.bsky.feed.defs#postView'
+ * ```
+ */
+/*@__NO_SIDE_EFFECTS__*/
+export function $type(nsid, hash) {
+    return (hash === 'main' ? nsid : `${nsid}#${hash}`);
+}
+/**
+ * Ensures an object has the specified `$type` property.
+ *
+ * If the object already has the correct `$type`, returns it unchanged.
+ * Otherwise, creates a new object with the `$type` property added.
+ *
+ * @typeParam V - The object type (may already have `$type`)
+ * @typeParam T - The expected `$type` string
+ * @param value - The object to add `$type` to
+ * @param $type - The `$type` value to ensure
+ * @returns The object with the `$type` property
+ *
+ * @example
+ * ```typescript
+ * const post = $typed({ text: 'hello' }, 'app.bsky.feed.post')
+ * // Result: { $type: 'app.bsky.feed.post', text: 'hello' }
+ *
+ * // If already typed, returns same object
+ * const typed = { $type: 'app.bsky.feed.post', text: 'hello' }
+ * const same = $typed(typed, 'app.bsky.feed.post')
+ * console.log(typed === same) // true
+ * ```
+ */
+export function $typed(value, $type) {
+    return value.$type === $type ? value : { ...value, $type };
+}
+//# sourceMappingURL=$type.js.map

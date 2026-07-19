@@ -1,0 +1,52 @@
+import type { Generated } from 'kysely'
+import type {
+  REVIEWCLOSED,
+  REVIEWESCALATED,
+  REVIEWNONE,
+  REVIEWOPEN,
+} from '../../lexicon/types/tools/ozone/moderation/defs.js'
+
+export const subjectStatusTableName = 'moderation_subject_status'
+
+export interface ModerationSubjectStatus {
+  id: Generated<number>
+
+  // unique columns
+  did: string
+  recordPath: string
+  convoId: string
+
+  recordCid: string | null
+  blobCids: string[] | null
+  reviewState:
+    | typeof REVIEWCLOSED
+    | typeof REVIEWOPEN
+    | typeof REVIEWESCALATED
+    | typeof REVIEWNONE
+  createdAt: string
+  updatedAt: string
+  lastReviewedBy: string | null
+  lastReviewedAt: string | null
+  lastReportedAt: string | null
+  lastAppealedAt: string | null
+  hostingUpdatedAt: string | null
+  hostingDeletedAt: string | null
+  hostingCreatedAt: string | null
+  hostingDeactivatedAt: string | null
+  hostingReactivatedAt: string | null
+  hostingStatus: string | null
+  muteUntil: string | null
+  muteReportingUntil: string | null
+  suspendUntil: string | null
+  takendown: boolean
+  appealed: boolean | null
+  comment: string | null
+  tags: string[] | null
+  priorityScore?: number
+  ageAssuranceState: string
+  ageAssuranceUpdatedBy?: string | null
+}
+
+export type PartialDB = {
+  [subjectStatusTableName]: ModerationSubjectStatus
+}

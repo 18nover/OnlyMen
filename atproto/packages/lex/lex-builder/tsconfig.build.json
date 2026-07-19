@@ -1,0 +1,13 @@
+{
+  "extends": ["../../../tsconfig/node.tsconfig.json"],
+  "include": ["./src"],
+  "exclude": ["**/*.test.ts"],
+  "references": [
+    { "path": "../lex-document/tsconfig.build.json" },
+    { "path": "../lex-schema/tsconfig.build.json" },
+  ],
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+  },
+}

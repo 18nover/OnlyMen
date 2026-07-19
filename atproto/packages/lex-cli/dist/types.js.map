@@ -1,0 +1,1 @@
+{"version":3,"file":"types.js","sourceRoot":"","sources":["../src/types.ts"],"names":[],"mappings":"","sourcesContent":["export interface GeneratedFile {\n  path: string\n  content: string\n}\n\nexport interface GeneratedAPI {\n  files: GeneratedFile[]\n}\n\nexport interface FileDiff {\n  act: 'add' | 'mod' | 'del'\n  path: string\n  content?: string\n}\n"]}
