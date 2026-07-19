@@ -1,0 +1,34 @@
+{
+  "terminal.integrated.cwd": "${workspaceFolder}",
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true
+  },
+
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+
+  "docker.languageserver.formatter.ignoreMultilineInstructions": true,
+
+  "git.autofetch": true
+}

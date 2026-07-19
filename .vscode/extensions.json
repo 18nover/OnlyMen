@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "ms-azuretools.vscode-docker",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "biomejs.biome",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "expo.vscode-expo-tools",
+    "redhat.vscode-yaml",
+    "DavidAnson.vscode-markdownlint",
+    "atproto-builders.atpi-vscode",
+    "anthropic.claude-code",
+    "EditorConfig.EditorConfig",
+    "mikestead.dotenv",
+    "GitHub.vscode-github-actions",
+    "ms-vscode.makefile-tools"
+  ]
+}

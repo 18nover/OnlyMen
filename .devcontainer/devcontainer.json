@@ -5,7 +5,7 @@
 
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/node:1": {
+    "ghcr.io/devcontainers/features/node:2.1.0": {
       "version": "22"
     },
     "ghcr.io/devcontainers/features/python:1": {
@@ -59,14 +59,7 @@
     }
   },
 
-  "forwardPorts": [
-    21390,
-    2139,
-    3000,
-    5173,
-    8080,
-    11434
-  ],
+  "forwardPorts": [21390, 2139, 3000, 5173, 8080, 11434],
 
   "portsAttributes": {
     "21390": {
@@ -102,6 +95,6 @@
   ],
 
   "containerEnv": {
-    "PROJECT_ROOT": "/onlymen"
+    "PROJECT_ROOT": "/workspaces/onlymen"
   }
 }
