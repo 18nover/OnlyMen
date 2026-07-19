@@ -55,8 +55,8 @@ import { Auth } from '@atproto/oauth-client';
 const client = new Auth({
   clientMetadata: {
     client_id: 'https://your-app.example.com/oauth-client-metadata.json',
-    client_name: 'Nottyboi',
-    redirect_uris: ['nottyboi://oauth/callback'],
+    client_name: 'OnlyMen',
+    redirect_uris: ['onlymen://oauth/callback'],
     scope: 'atproto transition:generic',
     grant_types: ['authorization_code', 'refresh_token'],
     response_types: ['code'],
@@ -76,7 +76,7 @@ async function login(handle: string) {
   await SecureStore.setAsync('oauth_state', state);
 
   // Redirect to auth URL
-  await WebBrowser.openAuthSessionAsync(url, 'nottyboi://oauth/callback');
+  await WebBrowser.openAuthSessionAsync(url, 'onlymen://oauth/callback');
 }
 ```
 
@@ -132,14 +132,14 @@ await Keychain.setGenericPassword('auth', JSON.stringify({
   handle,
   did,
 }), {
-  service: 'com.nottyboi.auth',
+  service: 'com.onlymen.auth',
   accessible: Keychain.ACCESSIBLE.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
   securityLevel: Keychain.SECURITY.SECURE_HARDWARE,
 });
 
 // Retrieve tokens
 const credentials = await Keychain.getGenericPassword({
-  service: 'com.nottyboi.auth',
+  service: 'com.onlymen.auth',
 });
 
 if (credentials) {
@@ -149,7 +149,7 @@ if (credentials) {
 
 // Delete tokens (logout)
 await Keychain.resetGenericPassword({
-  service: 'com.nottyboi.auth',
+  service: 'com.onlymen.auth',
 });
 ```
 
@@ -160,7 +160,7 @@ import * as Keychain from 'react-native-keychain';
 
 // Same API — react-native-keychain uses Android Keystore internally
 await Keychain.setGenericPassword('auth', JSON.stringify(tokens), {
-  service: 'com.nottyboi.auth',
+  service: 'com.onlymen.auth',
   accessible: Keychain.ACCESSIBLE.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
   securityLevel: Keychain.SECURITY.SECURE_HARDWARE,
 });
@@ -336,7 +336,7 @@ async function logout() {
   }
 
   // 3. Clear secure storage
-  await Keychain.resetGenericPassword({ service: 'com.nottyboi.auth' });
+  await Keychain.resetGenericPassword({ service: 'com.onlymen.auth' });
 
   // 4. Clear in-memory state
   clearAuthState();

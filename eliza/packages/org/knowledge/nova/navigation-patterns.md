@@ -2,7 +2,7 @@
 
 ## Overview
 
-React Navigation 7 is the primary navigation library for nottyboi. This guide covers patterns for stack, tab, and drawer navigation, deep linking, and Expo Router integration.
+React Navigation 7 is the primary navigation library for onlymen. This guide covers patterns for stack, tab, and drawer navigation, deep linking, and Expo Router integration.
 
 ---
 
@@ -298,7 +298,7 @@ function CustomDrawerContent(props: DrawerContentScrollViewProps) {
 ### Configuration
 ```tsx
 const linking = {
-  prefixes: ['nottyboi://', 'https://nottyboi.com'],
+  prefixes: ['onlymen://', 'https://onlymen.com'],
   config: {
     screens: {
       Main: {
@@ -351,15 +351,15 @@ function ChatScreen({ route }: Props) {
 // app.json
 {
   "expo": {
-    "scheme": "nottyboi",
+    "scheme": "onlymen",
     "ios": {
-      "associatedDomains": ["applinks:nottyboi.com"]
+      "associatedDomains": ["applinks:onlymen.com"]
     },
     "android": {
       "intentFilters": [
         {
           "action": "VIEW",
-          "data": [{ "scheme": "https", "host": "nottyboi.com" }],
+          "data": [{ "scheme": "https", "host": "onlymen.com" }],
           "category": ["BROWSABLE", "DEFAULT"]
         }
       ]

@@ -6,7 +6,7 @@ description: >
   workflows, Expo Modules API for native code, platform APIs, environment
   configuration, prebuild customization, and expo-updates for OTA delivery.
 metadata:
-  author: NottyBoi Engineering
+  author: OnlyMen Engineering
   team: Nova, Circuit
   version: 1.0.0
   tags:
@@ -21,7 +21,7 @@ metadata:
 # Expo Development
 
 Skill for building, configuring, and deploying Expo-based applications within
-the NottyBoi engineering organization. Targets Nova and Circuit projects on
+the OnlyMen engineering organization. Targets Nova and Circuit projects on
 Expo SDK 54.
 
 ---
@@ -127,7 +127,7 @@ Expo Router handles deep link parsing automatically. Register your scheme in
 ```json
 {
   "expo": {
-    "scheme": "nottyboi"
+    "scheme": "onlymen"
   }
 }
 ```
@@ -193,20 +193,20 @@ available. If Metro is not running, the build loads from the embedded bundle.
     "preview": {
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://staging.api.nottyboi.dev"
+        "EXPO_PUBLIC_API_URL": "https://staging.api.onlymen.dev"
       }
     },
     "production": {
       "autoIncrement": true,
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://api.nottyboi.dev"
+        "EXPO_PUBLIC_API_URL": "https://api.onlymen.dev"
       }
     }
   },
   "submit": {
     "production": {
       "ios": {
-        "appleId": "team@nottyboi.dev",
+        "appleId": "team@onlymen.dev",
         "ascAppId": "1234567890"
       },
       "android": {
@@ -284,7 +284,7 @@ modules/
     "modules": ["MyModule"]
   },
   "android": {
-    "modules": ["com.nottyboi.mymodule.MyModule"]
+    "modules": ["com.onlymen.mymodule.MyModule"]
   }
 }
 ```

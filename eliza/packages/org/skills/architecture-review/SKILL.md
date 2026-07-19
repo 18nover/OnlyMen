@@ -1,7 +1,7 @@
 ---
 name: architecture-review
 description: >
-  Comprehensive architecture review skill for NottyBoi system design. Provides
+  Comprehensive architecture review skill for OnlyMen system design. Provides
   structured methodologies for Architecture Decision Records (ADRs), trade-off
   analysis, system design patterns, AT Protocol architecture assessment,
   scalability review, and maintainability evaluation.
@@ -30,7 +30,7 @@ applicable_agents:
 ## Overview
 
 This skill provides a structured methodology for reviewing, evaluating, and
-documenting architectural decisions in NottyBoi systems. It covers Architecture
+documenting architectural decisions in OnlyMen systems. It covers Architecture
 Decision Records (ADRs), trade-off analysis, system design patterns, AT Protocol
 architecture, scalability assessment, and maintainability review. Use this skill
 when conducting architecture reviews, evaluating design alternatives, or

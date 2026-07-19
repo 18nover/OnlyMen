@@ -2,7 +2,7 @@
 
 ## Overview
 
-Expo SDK 54 is the foundation for the nottyboi mobile application. This guide covers key modules, development workflows, and best practices for working with the SDK.
+Expo SDK 54 is the foundation for the onlymen mobile application. This guide covers key modules, development workflows, and best practices for working with the SDK.
 
 ---
 
@@ -540,12 +540,12 @@ import { ExpoConfig, ConfigContext } from 'expo/config';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: 'nottyboi',
-  slug: 'nottyboi',
+  name: 'onlymen',
+  slug: 'onlymen',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
-  scheme: 'nottyboi',
+  scheme: 'onlymen',
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
@@ -553,7 +553,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.nottyboi.app',
+    bundleIdentifier: 'com.onlymen.app',
     infoPlist: {
       NSCameraUsageDescription: 'Used for profile photos and post attachments',
       NSLocationWhenInUseUsageDescription: 'Used for location-based features',
@@ -564,7 +564,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#1a1a2e',
     },
-    package: 'com.nottyboi.app',
+    package: 'com.onlymen.app',
     permissions: [
       'CAMERA',
       'ACCESS_FINE_LOCATION',
@@ -597,13 +597,13 @@ const ENV = {
     enableDevTools: true,
   },
   preview: {
-    apiUrl: 'https://staging-api.nottyboi.com',
-    wsUrl: 'wss://staging-api.nottyboi.com',
+    apiUrl: 'https://staging-api.onlymen.com',
+    wsUrl: 'wss://staging-api.onlymen.com',
     enableDevTools: false,
   },
   production: {
-    apiUrl: 'https://api.nottyboi.com',
-    wsUrl: 'wss://api.nottyboi.com',
+    apiUrl: 'https://api.onlymen.com',
+    wsUrl: 'wss://api.onlymen.com',
     enableDevTools: false,
   },
 };

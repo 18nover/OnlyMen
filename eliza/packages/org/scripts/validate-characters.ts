@@ -1,5 +1,5 @@
 /**
- * Validates every NottyBoi org character file against @elizaos/core's
+ * Validates every OnlyMen org character file against @elizaos/core's
  * character parsing, and checks the per-agent knowledge directory exists.
  * Exits non-zero on the first structural problem so `bun run verify` fails
  * loudly instead of shipping a character the runtime cannot load.

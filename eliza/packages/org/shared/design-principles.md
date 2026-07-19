@@ -2,7 +2,7 @@
 
 ## ALF Design System
 
-NottyBoi uses the ALF (Atomic Layout Framework) design system inherited from Bluesky. All UI must use ALF atoms and theme tokens.
+OnlyMen uses the ALF (Atomic Layout Framework) design system inherited from Bluesky. All UI must use ALF atoms and theme tokens.
 
 ### Core Concepts
 
@@ -12,7 +12,7 @@ NottyBoi uses the ALF (Atomic Layout Framework) design system inherited from Blu
 
 ### Color System
 
-- **Primary** — NottyBoi brand color (TBD during rebrand)
+- **Primary** — OnlyMen brand color (TBD during rebrand)
 - **Semantic** — Success (green), warning (amber), error (red), info (blue)
 - **Neutral** — Gray scale for backgrounds, borders, text
 - **Theme-aware** — All colors via `t.atoms.*` for light/dark mode

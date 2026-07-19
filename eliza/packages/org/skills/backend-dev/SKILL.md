@@ -6,7 +6,7 @@ description: >
   authentication via AT Protocol OAuth, rate limiting, input validation with
   Zod, Docker configuration, health checks, and structured logging.
 metadata:
-  author: NottyBoi Engineering
+  author: OnlyMen Engineering
   team: Forge
   version: 1.0.0
   tags:
@@ -22,7 +22,7 @@ metadata:
 
 # Backend Development
 
-Skill for building and maintaining backend services within the NottyBoi
+Skill for building and maintaining backend services within the OnlyMen
 engineering organization. Targets Forge's API layer and infrastructure.
 
 ---
@@ -109,9 +109,10 @@ Map HTTP status codes to error types:
 For AT Protocol XRPC endpoints, follow the Lexicon schema convention:
 
 ```
-com.nottyboi.feed.getFeed
-com.nottyboi.feed.createPost
-com.nottyboi.user.getProfile
+app.bsky.feed.getFeed          (query)
+app.bsky.feed.post             (record)
+app.bsky.contact.importContacts (procedure)
+app.bsky.ageassurance.getState  (query)
 ```
 
 - Query endpoints use `get` prefix, procedure endpoints use `create`/`delete`.
@@ -274,7 +275,7 @@ Set a maximum cardinality with `ZREMRANGEBYRANK` to cap memory usage.
 
 ### AT Protocol OAuth
 
-AT Protocol uses OAuth 2.0 with PKCE for authentication. The NottyBoi
+AT Protocol uses OAuth 2.0 with PKCE for authentication. The OnlyMen
 backend acts as both a relying party (when authenticating users) and an
 authorization server (when issuing tokens for client apps).
 

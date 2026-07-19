@@ -3,7 +3,7 @@
 ## Core Principles
 
 ### 1. Decentralization First
-NottyBoi is built on AT Protocol. Every design decision must preserve:
+OnlyMen is built on AT Protocol. Every design decision must preserve:
 - **Self-authenticating data** — Users sign their own content
 - **Repository-based storage** — Data lives in user repos, not our servers
 - **Handle portability** — Users can move between providers without losing identity
@@ -11,7 +11,8 @@ NottyBoi is built on AT Protocol. Every design decision must preserve:
 
 ### 2. Protocol Compliance
 - All API surfaces must conform to AT Protocol Lexicons
-- Custom Lexicons go in `app.nottyboi.*` namespace
+- OnlyMen currently ships no custom lexicons — the fork inherits upstream namespaces (`com.atproto.*`, `app.bsky.*` including `app.bsky.ageassurance.*` and `app.bsky.contact.*`, `tools.ozone.*`)
+- If OnlyMen ever needs its own lexicon, reserve a distinct reverse-DNS root first (open decision — domain/trademark not settled); never add non-upstream NSIDs inside `app.bsky.*`
 - Never break backward compatibility without a migration path
 - Lexicon changes require Atlas approval before implementation
 

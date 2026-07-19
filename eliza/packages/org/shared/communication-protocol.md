@@ -2,7 +2,7 @@
 
 ## Overview
 
-NottyBoi agents communicate via a hybrid system: **events** for notifications, **shared memory** for artifacts, and **direct messages** for discussion.
+OnlyMen agents communicate via a hybrid system: **events** for notifications, **shared memory** for artifacts, and **direct messages** for discussion.
 
 ## Event Types
 

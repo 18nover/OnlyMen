@@ -2,7 +2,7 @@
 name: technical-writing
 description: "Technical writing skill for Scribe. README templates, API docs, architecture docs, deployment guides, runbooks, release notes, incident post-mortems, audience adaptation, doc tooling."
 version: 1.0.0
-author: NottyBoi Engineering
+author: OnlyMen Engineering
 agent: Scribe
 category: documentation
 tags:
@@ -17,7 +17,7 @@ tags:
 
 # Technical Writing Skill
 
-This skill covers technical documentation for the NottyBoi project: READMEs, API documentation, architecture guides, deployment docs, runbooks, release notes, post-mortems, audience-appropriate writing, and documentation tooling.
+This skill covers technical documentation for the OnlyMen project: READMEs, API documentation, architecture guides, deployment docs, runbooks, release notes, post-mortems, audience-appropriate writing, and documentation tooling.
 
 ---
 
@@ -39,7 +39,7 @@ One-line description of what this service does.
 
 ### Local Development
 ```bash
-git clone https://github.com/nottyboi/[service].git
+git clone https://github.com/onlymen/[service].git
 cp .env.example .env
 docker compose up -d
 npm install
@@ -90,7 +90,7 @@ See [docs/deployment.md](./docs/deployment.md) for production deployment.
 
 ## License
 
-Proprietary -- NottyBoi Engineering
+Proprietary -- OnlyMen Engineering
 ```
 
 ### README Quality Standards
@@ -274,7 +274,7 @@ What is the change being proposed or decided?
 ### 1. Pre-deployment
 ```bash
 # Verify health of current deployment
-curl -s https://api.nottyboi.dev/health | jq .
+curl -s https://api.onlymen.dev/health | jq .
 
 # Create database backup
 ./scripts/backup-db.sh
@@ -292,7 +292,7 @@ docker compose run --rm api npm run migrate
 docker compose up -d --remove-orphans
 
 # Verify deployment
-curl -s https://api.nottyboi.dev/health | jq .
+curl -s https://api.onlymen.dev/health | jq .
 ```
 
 ### 3. Post-deployment
@@ -349,14 +349,14 @@ docker compose run --rm api npm run migrate:undo
 
 ### Step 1: Check Service Health
 ```bash
-curl -s https://api.nottyboi.dev/health
+curl -s https://api.onlymen.dev/health
 docker compose ps
 docker compose logs --tail=50 api
 ```
 
 ### Step 2: Check Database
 ```bash
-docker compose exec postgres psql -U nottyboi -c \
+docker compose exec postgres psql -U onlymen -c \
   "SELECT count(*) FROM pg_stat_activity WHERE state = 'active';"
 ```
 

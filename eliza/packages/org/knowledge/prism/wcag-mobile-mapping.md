@@ -3,7 +3,7 @@
 ## Overview
 
 WCAG 2.1 was written for the web, but every success criterion has a mobile
-equivalent. This document maps the criteria NottyBoi treats as release-gating
+equivalent. This document maps the criteria OnlyMen treats as release-gating
 (Level A and AA) onto concrete iOS and Android behaviors, with the React
 Native APIs that satisfy them. Severity for a violation follows Prism's audit
 ladder: blocker, major, minor, advisory.
@@ -27,7 +27,7 @@ Structure conveyed visually (headings, lists, grouping) must be programmatic.
 
 - RN: `accessibilityRole="header"` on section titles; group label + value in
   one focusable row with a combined label instead of two stops.
-- Common NottyBoi failure: settings rows where the label and the value are
+- Common OnlyMen failure: settings rows where the label and the value are
   separate focus stops — combine them.
 
 ### 1.3.4 Orientation (AA)
@@ -84,7 +84,7 @@ Keyboard focus indicator is visible on web and for external keyboards.
 Multipoint or path-based gestures (swipe to dismiss, pinch to zoom) need a
 single-pointer alternative (a visible button).
 
-### 2.5.5 Target Size (AAA, NottyBoi ships it anyway)
+### 2.5.5 Target Size (AAA, OnlyMen ships it anyway)
 Touch targets ≥ 44×44pt. Advisory severity when missed on dense UI, major on
 primary actions.
 
@@ -114,7 +114,7 @@ current state.
 - RN: `accessibilityRole` (`button`, `switch`, `checkbox`, `link`, `header`,
   `tab`), `accessibilityLabel`, `accessibilityState`
   (`checked`/`selected`/`disabled`/`expanded`/`busy`).
-- The single most common finding in NottyBoi audits. A toggle announcing as
+- The single most common finding in OnlyMen audits. A toggle announcing as
   an unlabeled "button" is a blocker.
 
 ### 4.1.3 Status Messages (AA)

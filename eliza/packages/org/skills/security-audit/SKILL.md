@@ -1,7 +1,7 @@
 ---
 name: security-audit
 description: >
-  Comprehensive security audit skill for NottyBoi iOS/Android applications.
+  Comprehensive security audit skill for OnlyMen iOS/Android applications.
   Provides structured methodologies for threat modeling, code review, dependency
   analysis, secret detection, and compliance verification aligned with OWASP
   Mobile Top 10 and privacy regulations.
@@ -23,7 +23,7 @@ applicable_agents:
 ## Overview
 
 This skill provides a structured methodology for conducting security audits of
-NottyBoi iOS and Android applications. It covers threat modeling, secure code
+OnlyMen iOS and Android applications. It covers threat modeling, secure code
 review, dependency analysis, secret detection, and privacy compliance. Use this
 skill when performing security assessments, pre-release audits, or incident
 response investigations.

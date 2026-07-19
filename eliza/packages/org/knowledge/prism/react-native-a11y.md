@@ -2,7 +2,7 @@
 
 ## Overview
 
-The React Native accessibility API surface NottyBoi relies on, with the
+The React Native accessibility API surface OnlyMen relies on, with the
 patterns Prism expects to see in reviewed code and the anti-patterns that
 generate findings. Nova implements; Prism reviews against this reference.
 

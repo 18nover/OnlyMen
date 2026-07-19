@@ -2,7 +2,7 @@
 
 ## Overview
 
-Effective state management in React Native requires separating state by its source and lifetime. This guide covers TanStack Query for server state, React Context for UI state, Zustand for complex local state, and principles for organizing state in the nottyboi codebase.
+Effective state management in React Native requires separating state by its source and lifetime. This guide covers TanStack Query for server state, React Context for UI state, Zustand for complex local state, and principles for organizing state in the onlymen codebase.
 
 ---
 
@@ -32,7 +32,7 @@ const queryClient = new QueryClient({
 
 const asyncStoragePersister = createAsyncStoragePersister({
   storage: AsyncStorage,
-  key: 'nottyboi-query-cache',
+  key: 'onlymen-query-cache',
 });
 
 export function QueryProvider({ children }: { children: React.ReactNode }) {
@@ -235,7 +235,7 @@ function useRealtimeMessages(roomId: string) {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    const ws = new WebSocket(`wss://api.nottyboi.com/ws/rooms/${roomId}`);
+    const ws = new WebSocket(`wss://api.onlymen.com/ws/rooms/${roomId}`);
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);

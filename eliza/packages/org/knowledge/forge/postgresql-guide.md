@@ -215,7 +215,7 @@ PostgreSQL creates a new process per connection (~10MB memory). Direct connectio
 
 ```ini
 [databases]
-nottyboi = host=localhost port=5432 dbname=nottyboi
+onlymen = host=localhost port=5432 dbname=onlymen
 
 [pgbouncer]
 listen_port = 6432
@@ -446,16 +446,16 @@ LIMIT 10;
 
 ```bash
 # Full backup
-pg_dump -h localhost -U admin -Fc nottyboi > backup_$(date +%Y%m%d).dump
+pg_dump -h localhost -U admin -Fc onlymen > backup_$(date +%Y%m%d).dump
 
 # Schema only
-pg_dump -h localhost -U admin --schema-only nottyboi > schema.sql
+pg_dump -h localhost -U admin --schema-only onlymen > schema.sql
 
 # Single table
-pg_dump -h localhost -U admin -t posts nottyboi > posts.dump
+pg_dump -h localhost -U admin -t posts onlymen > posts.dump
 
 # Restore
-pg_restore -h localhost -U admin -d nottyboi backup_20250115.dump
+pg_restore -h localhost -U admin -d onlymen backup_20250115.dump
 ```
 
 ### Automated Backup Schedule
@@ -467,8 +467,8 @@ BACKUP_DIR="/backups/postgres"
 DATE=$(date +%Y%m%d_%H%M%S)
 RETENTION_DAYS=30
 
-pg_dump -h localhost -U admin -Fc nottyboi | \
-  gzip > "${BACKUP_DIR}/nottyboi_${DATE}.dump.gz"
+pg_dump -h localhost -U admin -Fc onlymen | \
+  gzip > "${BACKUP_DIR}/onlymen_${DATE}.dump.gz"
 
 # Remove old backups
 find "${BACKUP_DIR}" -name "*.dump.gz" -mtime +${RETENTION_DAYS} -delete
@@ -501,7 +501,7 @@ recovery_target_time = '2025-01-15 10:30:00'
 ```sql
 -- Active connections
 SELECT count(*) FROM pg_stat_activity
-WHERE state = 'active' AND datname = 'nottyboi';
+WHERE state = 'active' AND datname = 'onlymen';
 
 -- Cache hit ratio (should be > 99%)
 SELECT
@@ -533,7 +533,7 @@ SELECT
   CASE WHEN pg_is_in_recovery() THEN 'replica' ELSE 'primary' END as role,
   now() - pg_postmaster_start_time() as uptime,
   (SELECT count(*) FROM pg_stat_activity WHERE state = 'active') as active_conns,
-  pg_database_size('nottyboi') as db_size;
+  pg_database_size('onlymen') as db_size;
 ```
 
 ---

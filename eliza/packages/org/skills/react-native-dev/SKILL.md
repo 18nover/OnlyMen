@@ -6,7 +6,7 @@ description: >
   extensions (.native.tsx/.web.tsx), ALF design system atoms, React Compiler
   compatibility, performance patterns, and debugging.
 metadata:
-  author: NottyBoi Engineering
+  author: OnlyMen Engineering
   team: Nova
   version: 1.0.0
   tags:
@@ -20,7 +20,7 @@ metadata:
 
 # React Native Development
 
-Skill for building and maintaining React Native applications within the NottyBoi
+Skill for building and maintaining React Native applications within the OnlyMen
 engineering organization. Targets Nova's mobile and cross-platform codebase.
 
 ---
@@ -198,7 +198,7 @@ components/
 
 ### Usage
 
-ALF atoms are the atomic design tokens for the NottyBoi UI. Import from
+ALF atoms are the atomic design tokens for the OnlyMen UI. Import from
 `@/alf`.
 
 ```tsx

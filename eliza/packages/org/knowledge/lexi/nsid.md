@@ -11,11 +11,13 @@ parties may already depend on it the moment it's public.
   Protocol spec itself (repo CRUD, sync, identity, moderation primitives).
   Changes here affect every AT Protocol implementation, not just Bluesky's.
 - **`app.bsky.*`** — the Bluesky application layer (feed, actor/profile,
-  graph/follows, notification, embeds). This is where NottyBoi-specific
-  product features that map onto the existing Bluesky app model live.
+  graph/follows, notification, embeds, and the newer `ageassurance` and
+  `contact` families). OnlyMen inherits this namespace wholesale from the
+  fork; we build product behavior on top of these upstream schemas rather
+  than adding our own NSIDs to the namespace.
 - **`tools.ozone.*`** — moderation tooling namespace (Vision's domain model,
   reviewed by you for schema mechanics).
-- **Custom NottyBoi namespace** (if we ever ship an NSID that isn't upstream
+- **Custom OnlyMen namespace** (if we ever ship an NSID that isn't upstream
   Bluesky) — reserve a distinct reverse-DNS root before defining anything;
   never squat inside `app.bsky.*` for non-upstream features, since that
   namespace's evolution isn't ours to control and a future upstream addition
