@@ -110,21 +110,44 @@ Core task: align the 13-agent "OnlyMen AI Engineering Organization"
 Protocol backend, replacing an old, unrelated camera/object-detection/
 livestreaming product vision the org was originally (wrongly) built around.
 
-| Agent | `ORG_ROLE` | Knowledge files |
+| Agent | `ORG_ROLE` | Knowledge files (bold = added in the Bluesky retraining) |
 |---|---|---|
-| Atlas | `engineering_director` | `project-management.md`, `onlymen-roadmap.md`, + shared: `engineering-handbook.md`, `communication-protocol.md`, `definition-of-done.md` |
-| Circuit | `devops_engineer` | `docker-compose.md`, `github-actions.md`, `eas-builds.md`, `monitoring.md`, `backup-restore.md` |
-| Compass | `qa_engineer` | `test-plan-template.md`, `edge-case-catalog.md`, `accessibility-testing.md`, `interop.md`, `mock-pds.md`, + shared `testing-standards.md` |
-| Echo | `repository_auditor` | `audit-checklist.md`, `dependency-analysis.md`, `technical-debt-patterns.md`, + shared `coding-standards.md`, `security-standards.md` |
-| Forge | `backend_architect` | `auth-patterns.md`, `api-design.md`, `postgresql-guide.md`, `docker-guide.md`, `redis-patterns.md`, + shared `security-standards.md`, `architecture-principles.md` |
-| Lexi (was Stream) | `lexicon_specialist` | `lexicon-schema.md`, `nsid.md`, `codegen.md`, `validation.md` |
-| Nova | `react_native_architect` | `react-native-patterns.md`, `expo-sdk-guide.md`, `navigation-patterns.md`, `state-management.md`, + shared `coding-standards.md`, `design-principles.md` |
-| Pixel | `design_system_architect` | `alf-design-system.md`, `color-system.md`, `typography.md`, `spacing.md`, `responsive-layouts.md`, + shared `design-principles.md` |
+| Atlas | `engineering_director` | `project-management.md`, `onlymen-roadmap.md` (rewritten — real ATProto roadmap), + shared: `engineering-handbook.md`, `communication-protocol.md`, `definition-of-done.md` |
+| Circuit | `devops_engineer` | **`services.md`**, `docker-compose.md`, `github-actions.md`, `eas-builds.md`, `monitoring.md`, `backup-restore.md` |
+| Compass | `qa_engineer` | `test-plan-template.md`, `edge-case-catalog.md` (+ ATProto edge-case table), `accessibility-testing.md`, `interop.md`, `mock-pds.md`, + shared `testing-standards.md` |
+| Echo | `repository_auditor` | **`forks.md`**, `audit-checklist.md`, `dependency-analysis.md`, `technical-debt-patterns.md`, + shared `coding-standards.md`, `security-standards.md` |
+| Forge | `backend_architect` | **`pds.md`**, **`appview.md`**, **`xrpc.md`**, **`firehose.md`**, `auth-patterns.md`, `api-design.md` (XRPC-first), `postgresql-guide.md`, `docker-guide.md`, `redis-patterns.md`, + shared `security-standards.md`, `architecture-principles.md` |
+| Lexi (was Stream) | `lexicon_specialist` | **`contact-ageassurance.md`**, `lexicon-schema.md` (+ full type inventory), `nsid.md`, `codegen.md`, `validation.md` |
+| Nova | `react_native_architect` | **`client.md`**, `react-native-patterns.md`, `expo-sdk-guide.md`, `navigation-patterns.md`, `state-management.md`, + shared `coding-standards.md`, `design-principles.md` |
+| Pixel | `design_system_architect` | `alf-design-system.md` (rewritten from real `app/src/alf/` source), **`icons.md`**, `color-system.md`, `typography.md`, `spacing.md`, `responsive-layouts.md`, + shared `design-principles.md` |
 | Prism | `accessibility_engineer` | `wcag-mobile-mapping.md`, `screen-reader-testing.md`, `react-native-a11y.md`, + shared `design-principles.md`, `review-process.md` |
-| Pulse | `performance_engineer` | `memory-profiling.md`, `battery-optimization.md`, `network-optimization.md`, `bundle-analysis.md` |
-| Scribe | `technical_writer` | `documentation-templates.md`, `api-doc-standards.md`, `runbook-template.md`, `release-notes-template.md`, + shared `documentation-standards.md` |
-| Sentinel | `security_engineer` | `owasp-mobile.md`, `threat-modeling.md`, `secret-management.md`, `encryption-guide.md`, + shared `security-standards.md` |
-| Vision (was computer-vision) | `moderation_specialist` | `moderation-actions.md`, `labels.md`, `triage.md`, `ozone.md` |
+| Pulse | `performance_engineer` | `memory-profiling.md`, `battery-optimization.md`, `network-optimization.md` (+ real network profile), `bundle-analysis.md` |
+| Scribe | `technical_writer` | `documentation-templates.md`, `api-doc-standards.md` (lexicons-first), `runbook-template.md`, `release-notes-template.md`, + shared `documentation-standards.md` |
+| Sentinel | `security_engineer` | **`identity.md`**, **`oauth.md`**, `owasp-mobile.md`, `threat-modeling.md` (+ OnlyMen outing-risk model), `secret-management.md`, `encryption-guide.md`, + shared `security-standards.md` |
+| Vision (was computer-vision) | `moderation_specialist` | **`reporting.md`**, `moderation-actions.md`, `labels.md`, `triage.md`, `ozone.md` |
+
+All 13 agents also reference the new shared primer **`shared/atproto.md`**
+and carry an identical `## Project` section at the top of their `system`
+prompt anchoring them to OnlyMen-on-ATProto (dev-helpers only — no live
+Bluesky network access; plugin-bluesky deliberately not wired).
+
+### Bluesky retraining (second major pass)
+
+Knowledge was rebuilt from three sources: (1) the actual forks — every new
+doc cites real paths in `atproto/packages/*` and `app/src/*` verified on
+disk; (2) official ATProto/Bluesky concepts (lexicon type system, DID/
+handle rules, OAuth profile, labels) distilled into the docs; (3) the
+existing 66 docs deepened in place. **Key factual correction:**
+`app.bsky.contact.*` and `app.bsky.ageassurance.*` are **upstream Bluesky
+lexicon families** (fully present in the generated `@atproto/api` client
+and the app UI), not OnlyMen customizations — earlier claims that these
+were "our custom lexicons" (and an `app.nottyboi.*` namespace note in
+`shared/architecture-principles.md`) were wrong and have been fixed.
+OnlyMen currently ships **no** custom lexicons. Also killed: Pixel's
+invented `@alf/core` API docs (real ALF = npm `@bsky.app/alf` extended by
+`app/src/alf/`, imported as `#/alf`), Atlas's stale chat/Twitch/YouTube
+roadmap (rewritten to the real web+Android ATProto plan), and fake 768px
+breakpoints (real: 500/800/1300 via `useBreakpoints()`).
 
 Also: deleted two off-stack skill files (`skills/computer-vision`,
 `skills/stream-integration`), replaced with `skills/moderation-tooling`
@@ -167,13 +190,22 @@ for (const f of fs.readdirSync("characters")) {
 
 ## Known not-yet-done / lower priority
 
-- **Repo-wide "NottyBoi" → "OnlyMen" branding sweep never done** — 34 files
-  still contained "nottyboi" (case-insensitive) as of the last check across
-  `characters/`, `knowledge/`, `skills/`, `shared/`. Only off-stack *content*
-  issues (camera/vision/Stream.io) were fixed, not branding strings. If you
-  do this sweep: rename actual files *and* every reference to them in the
-  same pass (the broken-reference bug above happened from doing only half
-  of that), then re-run the checker script above.
+- **"NottyBoi" → "OnlyMen" branding sweep: DONE for `eliza/packages/org/`**
+  (was actually 45 files, not the 34 previously counted — the count had
+  gone stale). All characters, knowledge, shared docs, skills, and script
+  comments swept; `docs/agents/*.md` regenerated via `bun run docs`. No
+  filenames contained the old brand, so no renames were needed.
+  `grep -rliE "nottyboi" eliza/packages/org/` now returns only two
+  intentional mentions of the old brand as a *cleanup target*
+  (`knowledge/echo/forks.md`'s grep instruction and the roadmap's sweep
+  item) — nothing is branded with it. Also fixed outside the org package:
+  the coordinator plugin was still **named** `@nottyboi/plugin-org-coordinator`
+  in `eliza/plugins/plugin-org-coordinator/package.json` (and referenced in
+  `eliza/packages/agent/package.json`) while `packages/org` depended on
+  `@onlymen/plugin-org-coordinator` — this name mismatch broke `bun install`
+  for the whole eliza workspace; renamed to `@onlymen/`.
+  Note: `app/` still carries Bluesky branding deliberately (rebrand
+  deferred, see conventions).
 - `@bsky.app/alf`'s actual token *values* (hex colors, spacing px scale)
   were never directly verified — the package isn't installed anywhere in
   this environment, so only the re-export/extension pattern in
@@ -201,34 +233,45 @@ for (const f of fs.readdirSync("characters")) {
   (both forks are MIT — keep their notices, decide OnlyMen's own license for
   original code), no CI currently runs against the unified repo itself.
 
-## Running the agents for real — infrastructure requirement (IMPORTANT)
+## Running the agents for real — model backend (DECIDED: claude CLI)
 
-`eliza/packages/org/.env.example` configures the org to run on **local Ollama
-inference**, not a cloud LLM API:
+**The default backend is now the local `claude` CLI subscription** via
+elizaOS's `plugin-cli-inference` — no API keys, no GPU. This is what the
+`run-eliza` skill (`eliza/.claude/skills/run-eliza/`) and `bin/org` already
+did; `.env.example` now documents it as the default:
 
 ```
-OLLAMA_BASE_URL=http://localhost:11434
-DEFAULT_MODEL=llama3.1:70b
-ATLAS_MODEL / ECHO_MODEL / SENTINEL_MODEL / VISION_MODEL = llama3.1:70b
-NOVA_MODEL / FORGE_MODEL / CIRCUIT_MODEL / PULSE_MODEL = codellama:34b
+ELIZA_RUN_BACKEND=claude-sdk       # exported as ELIZA_CHAT_VIA_CLI at boot
+ELIZA_PLANNER_NATIVE_TOOLS=0       # required with a CLI backend
 ```
 
-A 70B and multiple 34B models require serious GPU/VRAM (tens of GB) —
-**this will not run on the Raspberry Pi described below** (4GB RAM, no GPU,
-aarch64). If the goal is to actually get these agents doing live work rather
-than just having well-written characters, either: (a) run the agent runtime
-on a machine with real GPU capacity (not the Pi), or (b) reconfigure
-`plugin-<model>` to point at a cloud provider (OpenAI/Anthropic/etc. — see
-`eliza/plugins/plugin-anthropic` or similar) instead of Ollama. This wasn't
-decided or acted on this session — flagging it before anyone assumes the Pi
-plan covers running the agents themselves, not just hosting the repo/code.
+Prerequisite: a logged-in claude CLI (`~/.claude/.credentials.json`).
+Boot an agent with `eliza/.claude/skills/run-eliza/driver.sh start <name>`
+or `packages/org/bin/org start <name>`; a chat turn takes 1–3 minutes.
 
-Also fixed in passing: `.env.example` still had `STREAM_MODEL` (renamed to
-`LEXI_MODEL`) and `VISION_MODEL=llava:13b` (a vision-language model, no
-longer needed now that Vision does text-based moderation-policy work, not
-image classification — changed to `llama3.1:70b` to match its reasoning-heavy
-peers Sentinel/Atlas/Echo). Note: `PRISM_MODEL` has no override entry at all
-(falls back to `DEFAULT_MODEL`) — not necessarily a bug, just worth knowing.
+Verified after the retraining (in a remote sandbox): `bun install` (after
+the `@onlymen/` plugin rename), `bun run --cwd packages/org verify` (all 13
+characters valid + lint clean), the knowledge broken-ref checker (0 broken),
+`bun run docs` regeneration, and headless boots of Lexi and Pixel
+(ready+settled, 24 plugins loaded, 0 failed). The **LLM chat turn itself
+could not be exercised there** (no claude CLI credentials in that sandbox —
+`no_provider` fallback). First person on a logged-in machine: boot lexi and
+ask *"What lexicon families does the age gate depend on and where do the
+schemas live?"* — the answer should name `app.bsky.ageassurance.*` /
+`app.bsky.contact.*` under `atproto/lexicons/app/bsky/` and say they are
+upstream, not custom. Ask pixel *"How do I apply spacing with ALF?"* — the
+answer should use `#/alf` atoms (`a.p_md`), not `@alf/core`.
+
+The previous **Ollama** config (llama3.1:70b / codellama:34b per-agent
+overrides) is preserved as a commented-out alternative block in
+`.env.example` for a future GPU machine — the hardware warning still
+applies: it will not run on the Raspberry Pi below. Important detail
+discovered while making this change: nothing in the run path ever read the
+Ollama variables (`driver.sh` only sets `ELIZA_CHAT_VIA_CLI`/
+`ELIZA_PLANNER_NATIVE_TOOLS`), so the Ollama block was aspirational
+config, and commenting it out changed no runtime behavior. The characters'
+`settings.model: "local"` field is likewise unread by this path and was
+left untouched.
 
 ## Raspberry Pi migration — historical assessment (STALE, re-verify)
 

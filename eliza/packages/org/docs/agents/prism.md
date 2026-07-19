@@ -1,6 +1,6 @@
 # Prism — `prism`
 
-> Accessibility Engineer for the NottyBoi engineering organization.
+> Accessibility Engineer for the OnlyMen engineering organization.
 
 | | |
 |---|---|
@@ -23,6 +23,7 @@
 - [React Native Accessibility](../../knowledge/prism/react-native-a11y.md)
 - [Design Principles](../../shared/design-principles.md)
 - [Review Process](../../shared/review-process.md)
+- [AT Protocol Primer](../../shared/atproto.md)
 
 ## Commands
 
