@@ -72,17 +72,22 @@ graph TD
   (eliza) / `pnpm verify` (atproto) yourself before pushing anything
   nontrivial. Use `git tag` for release/rollback checkpoints instead of
   branches (e.g. `v0.1.0-web-launch`).
-- **Naming**: prefer one clear word for files/directories
-  (`labels.md`, `ozone.md`); when a second word is genuinely needed, one
-  hyphen, two words max (`lexicon-schema.md`) — don't stack three+ words or
-  mix underscores and hyphens in the same name.
+- **Naming (confirmed by the user)**: prefer one clear word for files/
+  directories (`labels.md`, `ozone.md`); when a second word is genuinely
+  needed, **one hyphen**, two words max (`lexicon-schema.md`) — don't stack
+  three+ words or mix underscores and hyphens in the same name. Same hyphen
+  style for release tags (`v0.1.0-web-launch`).
 - **Formatting**: 2-space indent, LF line endings, trim trailing whitespace
   (except Markdown, where trailing spaces can be meaningful) — enforced by
   the root `.editorconfig`, consistent with all three sub-projects' own
   Prettier/Biome configs (all already 2-space, no semicolons, single quotes).
-- **Colors/brand palette**: not yet decided — `app/src/alf/themes.ts` /
-  `tokens.ts` still pull Bluesky's actual blue palette. Ask the user before
-  touching this; they've explicitly deferred it, not delegated it.
+- **Colors/brand palette**: deliberately deferred until real UI work starts
+  — `app/src/alf/themes.ts` / `tokens.ts` still pull Bluesky's actual blue
+  palette, untouched on purpose. The user's stated direction for later:
+  something like OnlyFans' light palette, or a Facebook-blue-style palette —
+  not decided, just a starting direction to react to when the time comes.
+  Don't touch colors without asking first; this has been explicitly
+  deferred, not delegated.
 
 ## Repo state
 
@@ -196,12 +201,44 @@ for (const f of fs.readdirSync("characters")) {
   (both forks are MIT — keep their notices, decide OnlyMen's own license for
   original code), no CI currently runs against the unified repo itself.
 
+## Running the agents for real — infrastructure requirement (IMPORTANT)
+
+`eliza/packages/org/.env.example` configures the org to run on **local Ollama
+inference**, not a cloud LLM API:
+
+```
+OLLAMA_BASE_URL=http://localhost:11434
+DEFAULT_MODEL=llama3.1:70b
+ATLAS_MODEL / ECHO_MODEL / SENTINEL_MODEL / VISION_MODEL = llama3.1:70b
+NOVA_MODEL / FORGE_MODEL / CIRCUIT_MODEL / PULSE_MODEL = codellama:34b
+```
+
+A 70B and multiple 34B models require serious GPU/VRAM (tens of GB) —
+**this will not run on the Raspberry Pi described below** (4GB RAM, no GPU,
+aarch64). If the goal is to actually get these agents doing live work rather
+than just having well-written characters, either: (a) run the agent runtime
+on a machine with real GPU capacity (not the Pi), or (b) reconfigure
+`plugin-<model>` to point at a cloud provider (OpenAI/Anthropic/etc. — see
+`eliza/plugins/plugin-anthropic` or similar) instead of Ollama. This wasn't
+decided or acted on this session — flagging it before anyone assumes the Pi
+plan covers running the agents themselves, not just hosting the repo/code.
+
+Also fixed in passing: `.env.example` still had `STREAM_MODEL` (renamed to
+`LEXI_MODEL`) and `VISION_MODEL=llava:13b` (a vision-language model, no
+longer needed now that Vision does text-based moderation-policy work, not
+image classification — changed to `llama3.1:70b` to match its reasoning-heavy
+peers Sentinel/Atlas/Echo). Note: `PRISM_MODEL` has no override entry at all
+(falls back to `DEFAULT_MODEL`) — not necessarily a bug, just worth knowing.
+
 ## Raspberry Pi migration — historical assessment (STALE, re-verify)
 
 Separate thread: user's WSL kept crashing, considered migrating off WSL onto
-a home Raspberry Pi (`admin@192.168.1.91`, hostname `lockard-tech`). Assessed,
-never executed. **Describes the OLD separate-nested-repos structure — no
-longer accurate, re-verify before acting.**
+a home Raspberry Pi (`admin@192.168.1.91`, hostname `lockard-tech`) **as a
+place to host the repo/dev environment** — this was never about running the
+70B/34B local-inference agent stack described above, which the Pi's hardware
+can't handle regardless. Assessed, never executed. **Describes the OLD
+separate-nested-repos structure — no longer accurate, re-verify before
+acting.**
 
 - Pi hardware (at the time): aarch64, 4 cores, ~4GB RAM, 2GB swap, 114GB disk
   (77GB free).
