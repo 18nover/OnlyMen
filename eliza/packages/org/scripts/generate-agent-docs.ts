@@ -84,17 +84,17 @@ const AGENT_META: Record<string, { skills: string[]; reviewType: string; example
     exampleTask: 'Threat-model the OAuth login flow',
     exampleAsk: 'Review the auth flow for token leakage risks',
   },
-  stream: {
-    skills: ['stream-integration'],
-    reviewType: 'code_review',
-    exampleTask: 'Integrate the live-stream player surface',
-    exampleAsk: 'How do we handle stream reconnection on mobile?',
+  lexi: {
+    skills: ['lexicon-design'],
+    reviewType: 'architecture_review',
+    exampleTask: 'Design the lexicon for the new pinned-post feature',
+    exampleAsk: 'Is this schema change additive or breaking?',
   },
   vision: {
-    skills: ['computer-vision'],
+    skills: ['moderation-tooling'],
     reviewType: 'code_review',
-    exampleTask: 'Prototype NSFW image classification for uploads',
-    exampleAsk: 'Which on-device model fits our moderation latency budget?',
+    exampleTask: 'Design the label taxonomy for AI-generated content',
+    exampleAsk: 'What queue should ban-evasion reports route to?',
   },
 }
 

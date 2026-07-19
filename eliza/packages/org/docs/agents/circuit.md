@@ -1,6 +1,6 @@
 # Circuit — `circuit`
 
-> DevOps Engineer for the NottyBoi engineering organization.
+> DevOps Engineer for the onlymen engineering organization.
 
 | | |
 |---|---|

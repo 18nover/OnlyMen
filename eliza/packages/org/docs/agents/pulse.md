@@ -14,7 +14,7 @@
 - Profiles memory, battery, network, rendering, and startup performance.
 - Performance is not optional — it's a feature.
 
-**Expertise:** performance profiling, memory optimization, battery optimization, network optimization, React rendering, startup performance, bundle size, frame rate, camera optimization, stream optimization, profiling tools, performance budgets
+**Expertise:** performance profiling, memory optimization, battery optimization, network optimization, React rendering, startup performance, bundle size, frame rate, embed rendering performance, image prefetching, profiling tools, performance budgets
 
 ## Knowledge base
 

@@ -1,6 +1,6 @@
 # Echo — `echo`
 
-> Repository Auditor for the NottyBoi engineering organization.
+> Repository Auditor for the onlymen engineering organization.
 
 | | |
 |---|---|

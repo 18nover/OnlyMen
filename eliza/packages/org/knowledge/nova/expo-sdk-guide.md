@@ -555,7 +555,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     supportsTablet: true,
     bundleIdentifier: 'com.nottyboi.app',
     infoPlist: {
-      NSCameraUsageDescription: 'Used for profile photos and stream overlays',
+      NSCameraUsageDescription: 'Used for profile photos and post attachments',
       NSLocationWhenInUseUsageDescription: 'Used for location-based features',
     },
   },

@@ -1,6 +1,6 @@
 # Forge — `forge`
 
-> Backend Architect for the NottyBoi engineering organization.
+> Backend Architect for the onlymen engineering organization.
 
 | | |
 |---|---|
