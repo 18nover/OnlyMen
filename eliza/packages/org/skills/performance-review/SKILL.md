@@ -1,7 +1,7 @@
 ---
 name: performance-review
 description: >
-  Comprehensive performance review skill for NottyBoi React Native applications.
+  Comprehensive performance review skill for OnlyMen React Native applications.
   Provides structured methodologies for profiling, memory leak detection, battery
   optimization, network performance analysis, startup time measurement, frame rate
   monitoring, bundle size analysis, and Hermes engine optimization.
@@ -25,7 +25,7 @@ applicable_agents:
 ## Overview
 
 This skill provides a structured methodology for identifying, measuring, and
-optimizing performance in NottyBoi React Native applications. It covers profiling
+optimizing performance in OnlyMen React Native applications. It covers profiling
 tools, common performance anti-patterns, optimization techniques, and monitoring
 strategies. Use this skill when conducting performance reviews, investigating
 performance regressions, or establishing performance baselines.

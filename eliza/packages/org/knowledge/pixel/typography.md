@@ -2,6 +2,16 @@
 
 ## Overview
 
+> **Reality check (this codebase):** text renders through
+> `#/components/Typography` (`Text`, `H1`, `H2`, `P`; `Text` defaults to
+> `[a.text_sm, a.leading_snug, t.atoms.text]`) with size atoms
+> `a.text_xs…text_xl`. Line heights ≤ 2 are treated as relative multiples
+> (`app/src/alf/typography.tsx`); the user font-scale setting is ±6.25%
+> per step and the font family is Inter (`'theme'`) or system
+> (`app/src/alf/fonts.ts`). The pixel tables below are generic
+> methodology — verify exact scale values in `@bsky.app/alf` after
+> install.
+
 The typography system provides a consistent, scalable type scale across all platforms. It supports Dynamic Type (iOS) and font scaling (Android), uses platform-appropriate fonts, and enforces clear visual hierarchy through size, weight, color, and spacing.
 
 ---

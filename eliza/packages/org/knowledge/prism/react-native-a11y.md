@@ -2,9 +2,19 @@
 
 ## Overview
 
-The React Native accessibility API surface NottyBoi relies on, with the
+The React Native accessibility API surface OnlyMen relies on, with the
 patterns Prism expects to see in reviewed code and the anti-patterns that
 generate findings. Nova implements; Prism reviews against this reference.
+
+In this codebase: a11y state/preferences live in `app/src/state/a11y.tsx`
+(screen-reader detection, reduce-motion); ALF provides `a.sr_only` (web
+screen-reader-only content), `contrastRatio` in
+`app/src/alf/util/colorGeneration.ts`, and user font scaling (±6.25% per
+step — every screen must survive it). House rules from upstream Bluesky:
+every interactive component takes a `label` prop; `Text` gets the `emoji`
+prop for user-generated strings; alt text on media is a first-class flow
+(composer enforces prompts), and `testID` props support automated a11y
+assertions.
 
 ---
 

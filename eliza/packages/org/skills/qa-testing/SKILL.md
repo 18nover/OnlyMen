@@ -2,7 +2,7 @@
 name: qa-testing
 description: "QA testing skill for Compass. Test plans, edge cases, manual QA, automated testing (Maestro), accessibility, tablet/responsive, offline/network, permission flows, bug reports."
 version: 1.0.0
-author: NottyBoi Engineering
+author: OnlyMen Engineering
 agent: Compass
 category: quality-assurance
 tags:
@@ -17,7 +17,7 @@ tags:
 
 # QA Testing Skill
 
-This skill covers quality assurance for the NottyBoi app: creating test plans, identifying edge cases, running manual and automated tests, validating accessibility and responsive layouts, testing offline behavior and permission flows, and writing effective bug reports.
+This skill covers quality assurance for the OnlyMen app: creating test plans, identifying edge cases, running manual and automated tests, validating accessibility and responsive layouts, testing offline behavior and permission flows, and writing effective bug reports.
 
 ---
 
@@ -172,14 +172,14 @@ Dedicate 30-minute sessions for unstructured exploration:
 ### Maestro Flow Example
 
 ```yaml
-appId: dev.nottyboi.app
+appId: dev.onlymen.app
 ---
 - launchApp
 - waitForAnimationToEnd
 
 # Login flow
 - tapOn: "Email"
-- inputText: "test@nottyboi.dev"
+- inputText: "test@onlymen.dev"
 - tapOn: "Password"
 - inputText: "testpassword123"
 - tapOn: "Log In"
@@ -279,7 +279,7 @@ maestro studio
 
 ```bash
 # iOS: Use Accessibility Inspector
-xcrun accessibilityinspector --app ./Build/Products/Debug-iphonesimulator/NottyBoi.app
+xcrun accessibilityinspector --app ./Build/Products/Debug-iphonesimulator/OnlyMen.app
 
 # Android: Use Accessibility Scanner (requires device)
 adb shell settings put secure enabled_accessibility_services \

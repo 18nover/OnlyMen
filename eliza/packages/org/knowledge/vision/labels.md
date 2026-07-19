@@ -3,7 +3,7 @@
 Labels are protocol-level facts (`com.atproto.label.defs`), delivered as
 signed statements from a labeler DID and consumed by any AppView/client. They
 are not app-specific flags — the taxonomy has to be coherent across every
-consumer of the label stream, not just NottyBoi's `app/`.
+consumer of the label stream, not just OnlyMen's `app/`.
 
 ## Two trust tiers — never conflate them
 

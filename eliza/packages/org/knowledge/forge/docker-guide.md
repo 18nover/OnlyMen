@@ -109,7 +109,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://app:${DB_PASSWORD}@postgres:5432/nottyboi
+      - DATABASE_URL=postgresql://app:${DB_PASSWORD}@postgres:5432/onlymen
       - REDIS_URL=redis://redis:6379
     depends_on:
       postgres:
@@ -135,7 +135,7 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: nottyboi
+      POSTGRES_DB: onlymen
       POSTGRES_USER: app
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
@@ -149,7 +149,7 @@ services:
           cpus: '2.0'
           memory: 1G
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U app -d nottyboi"]
+      test: ["CMD-SHELL", "pg_isready -U app -d onlymen"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -335,7 +335,7 @@ services:
     logging:
       driver: awslogs
       options:
-        awslogs-group: /ecs/nottyboi
+        awslogs-group: /ecs/onlymen
         awslogs-region: us-east-1
         awslogs-stream-prefix: app
 ```

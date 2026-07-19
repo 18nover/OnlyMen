@@ -2,7 +2,14 @@
 
 ## Overview
 
-Responsive layouts adapt to screen size and orientation using breakpoints, layout patterns, and adaptive components. The system targets two primary breakpoints: phone (< 768px) and tablet (>= 768px), with layout patterns that reflow content appropriately for each.
+> **Reality check (this codebase):** the real breakpoints come from
+> `useBreakpoints()` in `app/src/alf/breakpoints.ts` — `gtPhone` ≥ 500px,
+> `gtMobile` ≥ 800px, `gtTablet` ≥ 1300px — plus `useLayoutBreakpoints()`
+> for the web shell (right nav ≥ 1100px). There is no 768px breakpoint and
+> no `@alf/core` package; the material below is generic responsive-design
+> methodology.
+
+Responsive layouts adapt to screen size and orientation using breakpoints, layout patterns, and adaptive components.
 
 ---
 

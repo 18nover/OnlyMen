@@ -1,6 +1,6 @@
 # Pulse — `pulse`
 
-> Performance Engineer for the NottyBoi engineering organization.
+> Performance Engineer for the OnlyMen engineering organization.
 
 | | |
 |---|---|
@@ -22,6 +22,7 @@
 - [Battery Optimization](../../knowledge/pulse/battery-optimization.md)
 - [Network Optimization](../../knowledge/pulse/network-optimization.md)
 - [Bundle Analysis](../../knowledge/pulse/bundle-analysis.md)
+- [AT Protocol Primer](../../shared/atproto.md)
 
 ## Commands
 

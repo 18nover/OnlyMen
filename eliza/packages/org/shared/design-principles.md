@@ -2,20 +2,21 @@
 
 ## ALF Design System
 
-NottyBoi uses the ALF (Atomic Layout Framework) design system inherited from Bluesky. All UI must use ALF atoms and theme tokens.
+OnlyMen uses ALF (Application Layout Framework), the design system inherited from Bluesky. All UI must use ALF atoms and theme tokens. The base tokens/atoms/themes live in the npm package `@bsky.app/alf`; the app extends them in `app/src/alf/` (`atoms.ts`, `tokens.ts`, `themes.ts`, `typography.tsx`, `breakpoints.ts`), imported as `#/alf`.
 
 ### Core Concepts
 
-- **Static atoms (`a.*`)** — Layout primitives: `a.flex_row`, `a.p_md`, `a.rounded_md`
-- **Theme atoms (`t.atoms.*`)** — Dynamic colors: `t.atoms.bg`, `t.atoms.text`, `t.atoms.border`
-- **Platform utilities** — `web()` and `native()` for platform-specific rendering
+- **Static atoms (`import {atoms as a} from '#/alf'`)** — theme-independent primitives: `a.flex_row`, `a.p_md`, `a.rounded_md`, `a.text_lg`
+- **Theme atoms / palette (`const t = useTheme()`)** — `t.atoms.bg`, `t.atoms.text`, `t.atoms.border_contrast_low`, `t.palette.primary_500`
+- **Platform utilities** — `web()`, `native()`, `ios()`, `android()`, `platform()` from `#/alf` return conditional styles inline in a style array
+- **Style arrays** — order atoms by flexbox, spacing, text, theme, then raw styles: `style={[a.flex_row, a.gap_md, a.p_lg, t.atoms.bg]}`
 
 ### Color System
 
-- **Primary** — NottyBoi brand color (TBD during rebrand)
-- **Semantic** — Success (green), warning (amber), error (red), info (blue)
-- **Neutral** — Gray scale for backgrounds, borders, text
-- **Theme-aware** — All colors via `t.atoms.*` for light/dark mode
+- **Three themes** — `light`, `dark`, and `dim`, built by `createThemes()` from `@bsky.app/alf` with `DEFAULT_PALETTE` / `DEFAULT_SUBDUED_PALETTE` (`app/src/alf/themes.ts`)
+- **Palette is deliberately still Bluesky's blue** (e.g. the `gradients.primary` blues in `app/src/alf/tokens.ts`) — the OnlyMen rebrand palette is TBD; do not invent brand colors or change palette values without an explicit decision
+- **Semantic** — positive/negative palette ranges for success/error states
+- **Theme-aware** — all colors via `t.atoms.*` / `t.palette.*`; never hardcode hex values in components
 
 ### Typography
 
@@ -39,9 +40,9 @@ NottyBoi uses the ALF (Atomic Layout Framework) design system inherited from Blu
 
 ### Responsive Layout
 
-- **Phone (< 768px)** — Single column, bottom navigation
-- **Tablet (≥ 768px)** — Side-by-side panels, sidebar navigation
-- Use `useBreakpoint()` hook for responsive decisions
+- Breakpoints from `useBreakpoints()` (`app/src/alf/breakpoints.ts`): `gtPhone` ≥ 500px, `gtMobile` ≥ 800px, `gtTablet` ≥ 1300px
+- Shell-specific breakpoints via `useLayoutBreakpoints()` (right nav ≥ 1100px)
+- Phone: single column, bottom navigation; wider: side panels, sidebar navigation
 - Test all layouts on both phone and tablet
 
 ## Accessibility

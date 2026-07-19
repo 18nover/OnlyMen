@@ -4,6 +4,27 @@
 
 The authentication system is built on AT Protocol OAuth, providing decentralized identity with standard OAuth 2.0 flows. It handles token lifecycle, secure storage, session management, and multi-device support across iOS, Android, and web.
 
+## The four server-side auth surfaces (where they live in our fork)
+
+1. **Session JWTs** — `com.atproto.server.createSession` issues a
+   short-lived access token + rotating refresh token; verified by
+   `atproto/packages/pds/src/auth-verifier.ts`. This is what the app uses
+   today (`app/src/state/session/`).
+2. **App passwords** — scoped credentials for third-party clients; scope
+   enforcement in `pds/src/auth-scope.ts`.
+3. **Service auth** — short-lived JWTs signed with the *user's repo key*,
+   audience-bound, used for PDS→AppView proxied reads (`pipethrough.ts`);
+   verified by `atproto/packages/bsky/src/auth-verifier.ts`. The AppView
+   has no sessions of its own — this is the only identity it trusts.
+4. **OAuth (DPoP + PAR)** — the PDS is an OAuth authorization server
+   (`pds/src/account-manager/oauth-store.ts`, `pds/src/auth-routes.ts`,
+   built on `atproto/packages/oauth*`). The client flow below rides on
+   this. Protocol details: Sentinel's `oauth.md`.
+
+Role auth exists per-method for system endpoints (e.g.
+`app.bsky.contact.sendNotification`) — auth is chosen per XRPC method,
+never per namespace (see `xrpc.md`).
+
 ---
 
 ## AT Protocol OAuth Flow
@@ -55,8 +76,8 @@ import { Auth } from '@atproto/oauth-client';
 const client = new Auth({
   clientMetadata: {
     client_id: 'https://your-app.example.com/oauth-client-metadata.json',
-    client_name: 'Nottyboi',
-    redirect_uris: ['nottyboi://oauth/callback'],
+    client_name: 'OnlyMen',
+    redirect_uris: ['onlymen://oauth/callback'],
     scope: 'atproto transition:generic',
     grant_types: ['authorization_code', 'refresh_token'],
     response_types: ['code'],
@@ -76,7 +97,7 @@ async function login(handle: string) {
   await SecureStore.setAsync('oauth_state', state);
 
   // Redirect to auth URL
-  await WebBrowser.openAuthSessionAsync(url, 'nottyboi://oauth/callback');
+  await WebBrowser.openAuthSessionAsync(url, 'onlymen://oauth/callback');
 }
 ```
 
@@ -132,14 +153,14 @@ await Keychain.setGenericPassword('auth', JSON.stringify({
   handle,
   did,
 }), {
-  service: 'com.nottyboi.auth',
+  service: 'com.onlymen.auth',
   accessible: Keychain.ACCESSIBLE.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
   securityLevel: Keychain.SECURITY.SECURE_HARDWARE,
 });
 
 // Retrieve tokens
 const credentials = await Keychain.getGenericPassword({
-  service: 'com.nottyboi.auth',
+  service: 'com.onlymen.auth',
 });
 
 if (credentials) {
@@ -149,7 +170,7 @@ if (credentials) {
 
 // Delete tokens (logout)
 await Keychain.resetGenericPassword({
-  service: 'com.nottyboi.auth',
+  service: 'com.onlymen.auth',
 });
 ```
 
@@ -160,7 +181,7 @@ import * as Keychain from 'react-native-keychain';
 
 // Same API — react-native-keychain uses Android Keystore internally
 await Keychain.setGenericPassword('auth', JSON.stringify(tokens), {
-  service: 'com.nottyboi.auth',
+  service: 'com.onlymen.auth',
   accessible: Keychain.ACCESSIBLE.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
   securityLevel: Keychain.SECURITY.SECURE_HARDWARE,
 });
@@ -336,7 +357,7 @@ async function logout() {
   }
 
   // 3. Clear secure storage
-  await Keychain.resetGenericPassword({ service: 'com.nottyboi.auth' });
+  await Keychain.resetGenericPassword({ service: 'com.onlymen.auth' });
 
   // 4. Clear in-memory state
   clearAuthState();

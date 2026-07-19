@@ -32,7 +32,7 @@
 ### Communication
 - **Internal:** Atlas updates all agents via `ORG_INCIDENT` event
 - **External:** Scribe updates users if user-facing
-- **Status page:** Circuit updates status.nottyboi.com
+- **Status page:** Circuit updates status.onlymen.com
 
 ### Resolution
 1. Fix confirmed working in production

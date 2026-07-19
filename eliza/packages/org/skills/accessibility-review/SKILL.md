@@ -1,7 +1,7 @@
 ---
 name: accessibility-review
 description: >
-  Comprehensive accessibility review skill for NottyBoi iOS/Android applications.
+  Comprehensive accessibility review skill for OnlyMen iOS/Android applications.
   Provides structured methodologies for WCAG 2.1 AA compliance, screen reader
   testing, keyboard navigation, Dynamic Type support, color contrast verification,
   and inclusive design practices.
@@ -27,7 +27,7 @@ applicable_agents:
 ## Overview
 
 This skill provides a structured methodology for reviewing and ensuring
-accessibility compliance in NottyBoi iOS and Android applications. It covers
+accessibility compliance in OnlyMen iOS and Android applications. It covers
 WCAG 2.1 AA requirements, platform-specific accessibility APIs, testing
 procedures, and inclusive design best practices. Use this skill when conducting
 accessibility audits, onboarding new components, or verifying compliance before

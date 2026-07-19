@@ -47,6 +47,40 @@ against it, never the other way around.
 - **`union`** — one-of-many shape, used heavily for embeds and moderation
   event types.
 
+## Full field-type inventory (per the atproto lexicon spec)
+
+Primitives: `null`, `boolean`, `integer` (with `minimum`/`maximum`/`enum`/
+`const`/`default`), `string` (with `maxLength`/`minLength` in bytes,
+`maxGraphemes`/`minGraphemes`, `enum`, `const`, `default`, `knownValues`,
+`format`). String formats: `at-identifier`, `at-uri`, `cid`, `datetime`,
+`did`, `handle`, `nsid`, `tid`, `record-key`, `uri`, `language`.
+
+Composites and special types:
+- **`object`** — `properties`, `required[]`, `nullable[]` (nullable is
+  distinct from optional: present-but-null vs absent).
+- **`array`** — `items` + `minLength`/`maxLength` (item count).
+- **`ref`** — points to another def: same-file `#name`, or global
+  `nsid#name`. **`union`** — `refs[]`, open by default (new variants may
+  appear; consumers must tolerate unknown ones); `closed: true` exists but
+  is rare.
+- **`blob`** — media reference with `accept` (MIME patterns) and `maxSize`;
+  actual bytes are uploaded via `com.atproto.repo.uploadBlob` and stored on
+  the PDS.
+- **`bytes`** (`maxLength`) and **`cid-link`** — raw binary / content links
+  in the underlying CBOR data model.
+- **`token`** — a named symbolic value (no shape) used like a well-known
+  constant in `knownValues`/unions.
+- **`params`** — only for `parameters` on query/procedure/subscription:
+  flat HTTP query params (primitives and arrays of primitives only).
+- **`unknown`** — an object of undeclared shape; use sparingly (e.g. record
+  passthrough), it disables validation at that node.
+
+`knownValues` vs `enum`: `enum` is closed (validation fails on anything
+else); `knownValues` is documentation for an open string — clients must
+handle unlisted values gracefully. Upstream uses `knownValues` almost
+everywhere (see `app.bsky.ageassurance.defs#status`) so behavior can evolve
+without schema breaks.
+
 ## String constraints matter
 
 `maxLength` is a byte limit; `maxGraphemes` is a user-facing character limit

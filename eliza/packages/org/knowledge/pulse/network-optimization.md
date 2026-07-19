@@ -4,6 +4,26 @@
 
 Network optimization techniques for mobile applications, including request batching, caching, image optimization, prefetching, and offline support.
 
+## This stack's network profile (optimize these, not hypotheticals)
+
+- **All client traffic is XRPC** through `@atproto/api` via the PDS
+  (proxied reads to the AppView). Latency wins come from TanStack Query
+  cache tuning (`STALE` constants, `persistedVersion`), cursor-page sizes,
+  and cache-mutation-over-refetch — not from hand-rolled batching.
+  Canonical patterns: Nova's `client.md`.
+- **Read-after-write** hides indexing latency for the author; don't add
+  refetch loops to "fix" eventual consistency for other viewers.
+- **Media**: images/video render via expo-image + the AppView's blob/CDN
+  path (`blob-resolver`, image resizing server-side). Prefetch feed media,
+  request sized variants, never full blobs for thumbnails.
+- **Server side**: AppView hydration fan-out and Postgres query shape
+  dominate p95 (Forge's `appview.md` pipeline); **firehose lag** is the
+  systemic backpressure metric (Forge's `firehose.md`) — indexing must
+  batch and stay idempotent.
+- **Web**: the bskyweb Go binary serves an embedded static export —
+  standard web-vitals work (bundle size, code-splitting) applies; see
+  `bundle-analysis.md`.
+
 ## Request Batching
 
 ### GraphQL Batching

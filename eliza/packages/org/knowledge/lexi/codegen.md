@@ -10,6 +10,8 @@ what you're looking at before touching it.
 - `gen-server` — generates server-side XRPC method scaffolding (used by PDS
   and AppView implementations).
 - `gen-md` — generates Markdown documentation from lexicon defs.
+- `gen-ts-obj` — generates a TypeScript object embedding the lexicon JSON
+  (how servers bundle their schemas for runtime validation).
 
 ## Modern: the `lex/*` package family
 

@@ -31,7 +31,7 @@ screenshot (the dashboard UI is a separate unbuilt Vite app).
 
 `start <name>` takes any character from `packages/org/characters/`
 (atlas, nova, forge, sentinel, pixel, compass, circuit, echo, pulse,
-stream, vision, scribe, prism). Overrides: `ELIZA_RUN_PORT` (default 2139),
+lexi, vision, scribe, prism). Overrides: `ELIZA_RUN_PORT` (default 2139),
 `ELIZA_RUN_STATE` (default `/tmp/eliza-run-state`), `ELIZA_RUN_BACKEND`
 (`claude-sdk` default; `claude` = cold-spawn per call, much slower).
 

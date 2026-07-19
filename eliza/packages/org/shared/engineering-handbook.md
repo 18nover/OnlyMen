@@ -1,8 +1,8 @@
-# NottyBoi Engineering Handbook
+# OnlyMen Engineering Handbook
 
 ## Mission
 
-Build NottyBoi — a decentralized social media platform forked from Bluesky, powered by AT Protocol, enhanced with AI capabilities via ElizaOS. Ship production-quality software that respects user sovereignty, privacy, and open standards.
+Build OnlyMen — a decentralized social media platform forked from Bluesky, powered by AT Protocol, enhanced with AI capabilities via ElizaOS. Ship production-quality software that respects user sovereignty, privacy, and open standards.
 
 ## Values
 
@@ -48,8 +48,8 @@ Build NottyBoi — a decentralized social media platform forked from Bluesky, po
 ## Project Structure
 
 ```
-nottyboi/
-├── app/          Bluesky Social App fork (becomes NottyBoi)
+onlymen/
+├── app/          Bluesky Social App fork (becomes OnlyMen)
 ├── atproto/      AT Protocol implementation
 ├── eliza/        ElizaOS runtime
 └── org/          This — the AI engineering organization

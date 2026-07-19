@@ -1,6 +1,6 @@
 # Scribe — `scribe`
 
-> Technical Writer for the NottyBoi engineering organization.
+> Technical Writer for the OnlyMen engineering organization.
 
 | | |
 |---|---|
@@ -23,6 +23,7 @@
 - [Runbook Template](../../knowledge/scribe/runbook-template.md)
 - [Release Notes Template](../../knowledge/scribe/release-notes-template.md)
 - [Documentation Standards](../../shared/documentation-standards.md)
+- [AT Protocol Primer](../../shared/atproto.md)
 
 ## Commands
 

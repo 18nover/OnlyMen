@@ -2,7 +2,17 @@
 
 ## Overview
 
-This guide covers RESTful API design conventions, XRPC patterns for AT Protocol services, request/response formatting, error handling, versioning, pagination, and rate limiting. Apply these patterns when building backend services and when consuming external APIs.
+**In this stack, the API layer is XRPC, not REST.** Every endpoint in the
+OnlyMen backend is a lexicon served at `/xrpc/<nsid>` — design starts with
+the schema (Lexi), not with a route table. Read `xrpc.md` (client/server
+packages, auth verifiers, proxying, the contract-first loop) and
+`appview.md` (skeleton → hydration → rules → presentation pipeline) first;
+they describe how endpoints are actually added to the PDS and AppView.
+
+The RESTful conventions below remain useful background for **auxiliary
+services** (internal dashboards, webhook receivers, third-party
+integrations) and for reasoning about HTTP semantics — but never introduce
+a bespoke REST surface where a lexicon-defined XRPC method belongs.
 
 ---
 

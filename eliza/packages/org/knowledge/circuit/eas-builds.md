@@ -4,6 +4,13 @@
 
 Expo Application Services (EAS) build configuration for React Native apps, including build profiles, triggers, custom scripts, and submission.
 
+> **This codebase:** the real config is `app/eas.json` — profiles `base`
+> (Node 24.18.0), `development` (dev client, internal, iOS simulator),
+> `preview` (internal, production channel), `production` (auto-increment;
+> `appVersionSource: "remote"`). Expo Go is not a shipping path (custom
+> native modules in `app/modules/`). Android is the launch mobile target;
+> iOS later. Examples below are generic — defer to `app/eas.json`.
+
 ## Build Profiles
 
 ### Configuration

@@ -2,6 +2,12 @@
 
 ## Overview
 
+> **Reality check (this codebase):** spacing is applied via ALF atoms
+> (`a.p_md`, `a.px_lg`, `a.gap_sm`, sizes `2xs…2xl`) from `#/alf`; screen
+> gutters via `useGutters()`. Exact pixel values live in the
+> `@bsky.app/alf` package tokens — verify there after install rather than
+> quoting the mapping below as authoritative.
+
 The spacing system is built on a consistent 4px base grid. All spacing values are multiples of 4, creating visual rhythm and alignment across the interface. Spacing tokens are used for padding, margin, gaps, and layout dimensions.
 
 ---

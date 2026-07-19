@@ -2,7 +2,7 @@
 name: devops-deployment
 description: "DevOps deployment skill for Circuit. Docker multi-stage builds, Docker Compose, GitHub Actions CI/CD, EAS builds, monitoring (Datadog dd-trace + pino), logging, secret rotation, backups, SSL/TLS."
 version: 1.0.0
-author: NottyBoi Engineering
+author: OnlyMen Engineering
 agent: Circuit
 category: infrastructure
 tags:
@@ -18,7 +18,7 @@ tags:
 
 # DevOps Deployment Skill
 
-This skill covers the full deployment lifecycle for NottyBoi services: containerization, CI/CD pipelines, mobile builds, observability, secrets management, backups, and TLS.
+This skill covers the full deployment lifecycle for OnlyMen services: containerization, CI/CD pipelines, mobile builds, observability, secrets management, backups, and TLS.
 
 ---
 
@@ -116,7 +116,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: production
-    image: ghcr.io/nottyboi/api:${API_VERSION:-latest}
+    image: ghcr.io/onlymen/api:${API_VERSION:-latest}
     restart: unless-stopped
     ports:
       - "${API_PORT:-3000}:3000"
@@ -158,13 +158,13 @@ services:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_DB: nottyboi
+      POSTGRES_DB: onlymen
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - pg-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d nottyboi"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d onlymen"]
       interval: 10s
       timeout: 3s
       retries: 3
@@ -305,7 +305,7 @@ jobs:
       - name: Deploy to production
         run: |
           ssh ${{ secrets.DEPLOY_HOST }} << 'EOF'
-            cd /opt/nottyboi
+            cd /opt/onlymen
             docker compose pull
             docker compose up -d --remove-orphans
             docker image prune -f
@@ -350,7 +350,7 @@ jobs:
   "submit": {
     "production": {
       "ios": {
-        "appleId": "team@nottyboi.dev",
+        "appleId": "team@onlymen.dev",
         "ascAppId": "1234567890"
       },
       "android": {
@@ -481,7 +481,7 @@ All services must log in structured JSON format:
 set -euo pipefail
 
 NEW_PASSWORD=$(openssl rand -base64 32)
-DB_USER="nottyboi"
+DB_USER="onlymen"
 
 # Update password in PostgreSQL
 docker compose exec postgres psql -U postgres -c \
@@ -521,15 +521,15 @@ RETENTION_DAYS=30
 
 # Create backup
 docker compose exec -T postgres pg_dump \
-  -U "${DB_USER}" -d nottyboi --format=custom \
-  > "${BACKUP_DIR}/nottyboi_${DATE}.dump"
+  -U "${DB_USER}" -d onlymen --format=custom \
+  > "${BACKUP_DIR}/onlymen_${DATE}.dump"
 
 # Compress
-gzip "${BACKUP_DIR}/nottyboi_${DATE}.dump"
+gzip "${BACKUP_DIR}/onlymen_${DATE}.dump"
 
 # Upload to S3
-aws s3 cp "${BACKUP_DIR}/nottyboi_${DATE}.dump.gz" \
-  s3://nottyboi-backups/postgres/ --storage-class STANDARD_IA
+aws s3 cp "${BACKUP_DIR}/onlymen_${DATE}.dump.gz" \
+  s3://onlymen-backups/postgres/ --storage-class STANDARD_IA
 
 # Cleanup old local backups
 find "${BACKUP_DIR}" -name "*.dump.gz" -mtime +${RETENTION_DAYS} -delete
@@ -548,7 +548,7 @@ find "${BACKUP_DIR}" -name "*.dump.gz" -mtime +${RETENTION_DAYS} -delete
 
 1. Pull latest backup from S3
 2. Stop the affected service
-3. Restore database: `docker compose exec -T postgres pg_restore -U ${DB_USER} -d nottyboi < backup.dump`
+3. Restore database: `docker compose exec -T postgres pg_restore -U ${DB_USER} -d onlymen < backup.dump`
 4. Verify data integrity with health check queries
 5. Restart service and monitor logs
 
@@ -561,7 +561,7 @@ find "${BACKUP_DIR}" -name "*.dump.gz" -mtime +${RETENTION_DAYS} -delete
 ```bash
 # Initial setup
 sudo apt install certbot
-sudo certbot certonly --standalone -d api.nottyboi.dev -d dashboard.nottyboi.dev
+sudo certbot certonly --standalone -d api.onlymen.dev -d dashboard.onlymen.dev
 
 # Auto-renewal (cron)
 0 0 1 * * certbot renew --deploy-hook "docker compose restart nginx"
@@ -572,10 +572,10 @@ sudo certbot certonly --standalone -d api.nottyboi.dev -d dashboard.nottyboi.dev
 ```nginx
 server {
     listen 443 ssl http2;
-    server_name api.nottyboi.dev;
+    server_name api.onlymen.dev;
 
-    ssl_certificate /etc/letsencrypt/live/api.nottyboi.dev/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/api.nottyboi.dev/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/api.onlymen.dev/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.onlymen.dev/privkey.pem;
 
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;

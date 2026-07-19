@@ -1,6 +1,6 @@
 # Atlas — `atlas`
 
-> Engineering Director and Project Manager for the onlymen organization.
+> Engineering Director and Project Manager for the OnlyMen organization.
 
 | | |
 |---|---|
@@ -19,10 +19,11 @@
 ## Knowledge base
 
 - [Project Management](../../knowledge/atlas/project-management.md)
-- [onlymen Roadmap](../../knowledge/atlas/onlymen-roadmap.md)
+- [OnlyMen Roadmap](../../knowledge/atlas/onlymen-roadmap.md)
 - [Engineering Handbook](../../shared/engineering-handbook.md)
 - [Communication Protocol](../../shared/communication-protocol.md)
 - [Definition of Done](../../shared/definition-of-done.md)
+- [AT Protocol Primer](../../shared/atproto.md)
 
 ## Commands
 
