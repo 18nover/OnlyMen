@@ -4,6 +4,37 @@
 
 Structured approach to identifying, categorizing, and mitigating security threats using STRIDE methodology, DREAD scoring, and attack trees.
 
+## The OnlyMen threat model (apply before the generic method)
+
+Our users are gay men, some in hostile jurisdictions or unsupportive
+environments. **Outing is the primary harm model** — a data exposure that
+would be low-severity for a generic social app can be life-altering here.
+Rank findings accordingly.
+
+High-sensitivity surfaces (all verified in the fork):
+- **Membership itself**: an account on OnlyMen implies orientation.
+  Anything that lets a third party test "does phone/email/handle X have an
+  account" (enumeration, contact-match side channels, password-reset
+  oracles) is a top-tier finding.
+- **Contact matching** (`app.bsky.contact.*`): phone numbers + the social
+  graph. Hash-based mutual matching only; `removeData` must genuinely
+  purge; `getMatches` must never reveal one-sided imports. SMS
+  verification creates carrier-visible metadata.
+- **Age assurance** (`app.bsky.ageassurance.*`): the stash `#event`
+  records carry email, IP, UA, country — identity-linkable verification
+  trails. Retention and provider (KWS) data-sharing need explicit review.
+- **Public-by-design repos**: posts, likes, follows, blocks are PUBLIC and
+  federated — deletion is a request to the network, not a guarantee. UI
+  must never imply repo data is private; private state belongs server-side
+  (bsync/stash — see Forge's `appview.md`).
+- **Federation**: other AppViews/relays can index our users' public data;
+  moderation (labels/takedowns) applies per-service, not globally.
+- **Custodial keys**: our PDS holds users' signing keys — host compromise
+  = account integrity compromise (see `identity.md`).
+
+Standing rule: any feature that collects, links, or exposes user data gets
+a Sentinel review gate before implementation (Atlas roadmap risk table).
+
 ## STRIDE Methodology
 
 ### Categories

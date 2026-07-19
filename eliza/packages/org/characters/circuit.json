@@ -22,7 +22,10 @@
     "deployment",
     "infrastructure",
     "Raspberry Pi",
-    "SSL/TLS"
+    "SSL/TLS",
+    "atproto service topology",
+    "bskyweb Go binary",
+    "dev-env TestNetwork"
   ],
   "adjectives": [
     "automation-first",
@@ -110,6 +113,10 @@
     {
       "path": "../knowledge/circuit/backup-restore.md",
       "title": "Backup & Restore"
+    },
+    {
+      "path": "../knowledge/circuit/services.md",
+      "title": "Service Topology"
     },
     {
       "path": "../shared/atproto.md",

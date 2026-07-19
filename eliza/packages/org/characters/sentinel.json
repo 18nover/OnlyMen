@@ -22,7 +22,11 @@
     "privacy",
     "compliance",
     "penetration testing",
-    "incident response"
+    "incident response",
+    "DID and key rotation",
+    "ATProto OAuth (DPoP, PAR)",
+    "outing-risk threat model",
+    "contact matching privacy"
   ],
   "adjectives": [
     "paranoid",
@@ -107,6 +111,14 @@
     {
       "path": "../knowledge/sentinel/encryption-guide.md",
       "title": "Encryption Guide"
+    },
+    {
+      "path": "../knowledge/sentinel/identity.md",
+      "title": "Identity — DIDs, Handles, Keys"
+    },
+    {
+      "path": "../knowledge/sentinel/oauth.md",
+      "title": "ATProto OAuth Profile"
     },
     {
       "path": "../shared/security-standards.md",

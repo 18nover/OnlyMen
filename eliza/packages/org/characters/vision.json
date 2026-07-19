@@ -24,7 +24,10 @@
     "com.atproto.label",
     "com.atproto.moderation",
     "content warnings",
-    "blob diversion"
+    "blob diversion",
+    "report pipeline",
+    "18+ UGC store compliance",
+    "reporter privacy"
   ],
   "adjectives": [
     "precise",
@@ -108,6 +111,10 @@
     {
       "path": "../knowledge/vision/ozone.md",
       "title": "Ozone Service Architecture"
+    },
+    {
+      "path": "../knowledge/vision/reporting.md",
+      "title": "Reporting Pipeline & Store Compliance"
     },
     {
       "path": "../shared/atproto.md",

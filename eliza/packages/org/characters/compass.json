@@ -22,7 +22,10 @@
     "federation testing",
     "mock PDS e2e testing",
     "backend testing",
-    "cross-platform testing"
+    "cross-platform testing",
+    "atproto edge cases",
+    "age-gate state testing",
+    "federation interop testing"
   ],
   "adjectives": [
     "thorough",

@@ -290,3 +290,22 @@ const dstTestDates = [
 - [ ] App backgrounding/foregrounding
 - [ ] Device rotation
 - [ ] Multi-window/split screen
+
+## ATProto-Specific Edge Cases (this stack)
+
+| Scenario | Test Case | Expected Behavior |
+|----------|-----------|-------------------|
+| Grapheme vs byte limits | Post with emoji/CJK near the limit (`maxGraphemes` 300 vs `maxLength` 3000 bytes on `app.bsky.feed.post`) | Counter matches graphemes; server accepts what the counter allows |
+| Handle change | User changes handle mid-session; old handle mentioned in existing posts | DID-keyed data intact; old handle resolves to nothing or new owner, never the wrong profile |
+| Handle vs DID identity | Block/mute a user, then they change handle | Block persists (keyed on DID, never handle) |
+| Unknown union variant | Feed contains an embed type this client version doesn't know | Graceful degrade (placeholder), no crash — unions are open |
+| Unknown knownValues | Label or ageassurance status outside the documented `knownValues` | Treated as unknown state, not an error |
+| Firehose lag | Post created, AppView indexing delayed | Author sees own post (read-after-write); others see it eventually; no duplicate on catch-up |
+| Cursor expiry | Paginate a feed, wait, request next page with stale cursor | Clean restart or continuation, no crash/dupes |
+| Deleted-but-cached | Open a thread where a reply was deleted after caching | Tombstone placeholder, thread structure intact |
+| Takedown vs delete | Content taken down by moderation vs deleted by author | Distinct UI treatments; appeal path only for takedowns |
+| Age-gate states | Each `status` × `access` combo (`unknown/pending/assured/blocked` × `unknown/none/safe/full`), incl. region change mid-session | UI gates match `useComputeAgeAssuranceRegionAccess`; `blocked` is not bypassable via cached views |
+| Contact-match lifecycle | Import → match → dismiss → re-import same contact | Dismissed match never resurfaces; `removeData` then `getSyncStatus` shows never-imported |
+| Session refresh race | Access token expires during multi-request screen load | Single refresh, queued retries, no logout loop |
+| Account deactivation | View profile/thread of a deactivated account | Designed unavailable state, not spinner or crash |
+| Self-labeled content | Author self-labels post as adult content | Blur/warning per label definition and viewer prefs, on every surface (feed, thread, embeds, notifications) |
