@@ -1,8 +1,36 @@
-# OnlyMen — project handoff
+# OnlyMen — Project Handoff
 
 Living reference for anyone (human or AI) picking up work on this repo cold.
 Verify anything time-sensitive below against the actual repo state before
-acting on it — this is a snapshot, not a live source of truth.
+acting on it — this is a snapshot, not a live source of truth. Dated history
+of completed work lives in `docs/CHANGELOG.md`. When you finish something,
+add it to CHANGELOG.md and update only the still-current facts here.
+
+**Brand / domains:**
+- GitHub org/user: **18nover**
+- Repo: **onlymen** (`github.com/18nover/onlymen`)
+- Live domains: **onlymen.gay** and **18nover.gay**
+
+---
+
+## Recap of Most Recent Session (2026-07-19, docs pass)
+
+- **FIREWALL.md**: Created — SSH rate-limit, Docker/UFW bypass warning, IPv6
+  rules, spec-based deletes, RDP removed from core services.
+- **CHANGELOG.md**: Created with full session history.
+- **AGENTS.md**: Created with 13 human names for the engineering org (see
+  roster below). **Names are documented here but not yet applied to the
+  actual `characters/*.json` files or ORG_AGENTS list.**
+- **HANDOFF.md**: This section added; domain branding added.
+- **Makefile**: Created at project root (`make handoff`, `make changelog`,
+  `make log`, `make update`, `make help`).
+
+Also noted: the `claude/bluesky-agents-planning-mpzmvd` branch has been
+merged to main via PR #1. It contained the full NottyBoi branding sweep,
+agent retraining, and plugin rename. The remote branch should be deleted
+to comply with the single-`main` convention.
+
+---
 
 ## What this project is
 
@@ -111,6 +139,15 @@ Protocol backend, replacing an old, unrelated camera/object-detection/
 livestreaming product vision the org was originally (wrongly) built around.
 
 | Agent | `ORG_ROLE` | Knowledge files (bold = added in the Bluesky retraining) |
+
+All 13 agents currently use code-style names (Atlas, Circuit, Compass, Echo,
+Forge, Lexi, Nova, Pixel, Prism, Pulse, Scribe, Sentinel, Vision) in their
+character files, ORG_AGENTS list, and knowledge paths. A proposal to rename
+them to human names (Andrew, Devon, Quinn, Audrey, Morgan, Lexi, Nadia,
+Desiree, Ethan, Parker, Penelope, Seth, Karen) is documented in `docs/AGENTS.md`
+but has not yet been applied to the codebase.
+
+| Agent (current) | `ORG_ROLE` | Knowledge files (bold = added in the Bluesky retraining) |
 |---|---|---|
 | Atlas | `engineering_director` | `project-management.md`, `onlymen-roadmap.md` (rewritten — real ATProto roadmap), + shared: `engineering-handbook.md`, `communication-protocol.md`, `definition-of-done.md` |
 | Circuit | `devops_engineer` | **`services.md`**, `docker-compose.md`, `github-actions.md`, `eas-builds.md`, `monitoring.md`, `backup-restore.md` |
@@ -190,6 +227,10 @@ for (const f of fs.readdirSync("characters")) {
 
 ## Known not-yet-done / lower priority
 
+- **Agent character files not yet renamed to human names** — see roster note
+  above. 13 `characters/*.json` files, the ORG_AGENTS list, and knowledge
+  file paths still use code-style names. Rename files *and* references in the
+  same pass, then re-run the verification script.
 - **"NottyBoi" → "OnlyMen" branding sweep: DONE for `eliza/packages/org/`**
   (was actually 45 files, not the 34 previously counted — the count had
   gone stale). All characters, knowledge, shared docs, skills, and script
