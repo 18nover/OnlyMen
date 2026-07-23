@@ -197,7 +197,7 @@ module.exports = function (_config) {
           backgroundColor: '#006AFF',
         },
         googleServicesFile: './google-services.json',
-        package: 'xyz.blueskyweb.app',
+        package: 'gay.onlymen.app',
         intentFilters: [
           {
             action: 'VIEW',

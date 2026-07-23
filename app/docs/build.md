@@ -111,7 +111,7 @@ This is NOT required for app development but if you also want to develop the Blu
   - Start the docker daemon (on MacOS this entails starting the Docker Desktop app)
   - Launch a Postgres database on port 5432
   - `cd packages/dev-env && pnpm start`
-  
+
 Run the account with the AppView proxy DID passed in as an environment variable: `EXPO_PUBLIC_BLUESKY_PROXY_DID=did:plc:dw4kbjf5mn7nhenabiqpkyh3 pnpm start`
 
 Then, when logging in or creating an account, point it to the localhost port of the devserver.
@@ -129,7 +129,7 @@ The Go server in this repository is only used for serving the web app in product
 
 To run the build with Go, use staging credentials, your own, or any other account you create.
 
-```
+```bash
 cd social-app
 pnpm install && pnpm build-web
 cd bskyweb/
@@ -144,7 +144,7 @@ On build success, access the application at [http://localhost:8100/](http://loca
 
 ### Debugging
 
-- Note that since 0.70, debugging using the old debugger (which shows up using CMD+D) doesn't work anymore. Follow the instructions below to debug the code: https://reactnative.dev/docs/next/hermes#debugging-js-on-hermes-using-google-chromes-devtools
+- Note that since 0.70, debugging using the old debugger (which shows up using CMD+D) doesn't work anymore. Follow the instructions below to debug the code: <https://reactnative.dev/docs/next/hermes#debugging-js-on-hermes-using-google-chromes-devtools>
 
 ### Developer Menu
 
@@ -155,7 +155,7 @@ To open the [Developer Menu](https://docs.expo.dev/debugging/tools/#developer-me
 - iOS Device: Shake the device, or touch 3 fingers to the screen
 - iOS Simulator: Press Ctrl + Cmd ⌘ + z on a Mac in the emulator to simulate the shake gesture or press Cmd ⌘ + d
 
-### Running E2E Tests
+### Running E2E Tests*
 
 See [testing.md](./testing.md).
 
@@ -193,6 +193,6 @@ dist/bundles/main.jsbundle dist/bundles/ios-<hash>.map`
 
 ### OTA updates
 
-To create OTA updates, run `eas update` along with the `--branch` flag to indicate which branch you want to push the update to, and the `--message` flag to indicate a message for yourself and your team that shows up on https://expo.dev. All the channels (which make up the options for the `--branch` flag) are given in `eas.json`. [See more here](https://docs.expo.dev/eas-update/getting-started/)
+To create OTA updates, run `eas update` along with the `--branch` flag to indicate which branch you want to push the update to, and the `--message` flag to indicate a message for yourself and your team that shows up on <https://expo.dev>. All the channels (which make up the options for the `--branch` flag) are given in `eas.json`. [See more here](https://docs.expo.dev/eas-update/getting-started/)
 
 The clients which can receive an OTA update are governed by the `runtimeVersion` property in `app.json`. Right now, it is set so that only apps with the same `appVersion` (same as `version` property in `app.json`) can receive the update and install it. However, we can manually set `"runtimeVersion": "1.34.0"` or anything along those lines as well. This is useful if very little native code changes from update to update. If we are manually setting `runtimeVersion`, we should increment the version each time the native code is changed. [See more here](https://docs.expo.dev/eas-update/runtime-versions/)
